@@ -1,0 +1,14 @@
+.content{
+    grid-area: c;
+    background: cornflowerblue;
+}
+.mainImg{
+    width: 100%;
+    height: 55vh;
+}
+.profileImg{
+    width: 120px;
+}
+.item{
+    color: greenyellow;
+}
