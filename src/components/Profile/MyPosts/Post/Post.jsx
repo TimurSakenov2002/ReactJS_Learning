@@ -7,9 +7,8 @@ function Post(props){
               <img src="https://tinypng.com/images/social/website.jpg"></img>
               <span>{props.message}</span>
               <div>
-              <span>Like</span>
+              <span>Like {props.likes}</span>
               </div>
-            
               </div>
     )
 }
