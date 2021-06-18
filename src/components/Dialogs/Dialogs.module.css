@@ -4,12 +4,14 @@
 }
 .dialogsItems{
     padding: 10px;
+    color: white;
+    text-decoration: none;
 }
 .messages{
     padding: 10px;
 }
 .messages .message{
-
+    color: white;
 }
 .dialogsItems .active{
     color: gold;
