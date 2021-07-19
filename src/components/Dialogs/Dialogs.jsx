@@ -3,7 +3,7 @@ import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import React from "react";
 
-function Dialogs(props){
+function Dialogs(props) {
 
     let state = props.dialogsPage;
 
@@ -11,16 +11,16 @@ function Dialogs(props){
     let messagesElements = state.messages.map(m => <Message message={m.message} key={m.id}/>);
     let newMessageBody = state.newMessageBody;
 
-    let onSendMessageClick = () =>{
+    let onSendMessageClick = () => {
         props.sendMessage();
     }
 
-    let onNewMessageChange = (e) =>{
+    let onNewMessageChange = (e) => {
         let body = e.target.value;
         props.updateNewMessageBody(body)
     }
 
-    return(
+    return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
                 {dialogsElement}
@@ -41,4 +41,5 @@ function Dialogs(props){
         </div>
     )
 }
+
 export default Dialogs;
