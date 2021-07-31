@@ -1,6 +1,7 @@
 import s from "./ProfileInfo.module.css"
 import Preloader from "../../common/Preloader/Preloader";
 import ProfileStatus from "./ProfileStatus";
+import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
 function ProfileInfo(props) {
 
@@ -20,7 +21,7 @@ function ProfileInfo(props) {
                     <div><span>Name: </span>{props.profile.fullName}</div>
                     <div><span>User info: </span>{props.profile.aboutMe}</div>
                     <img src={props.profile.photos.large}/>
-                    <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
+                    <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
                 </div>
                 <br/>
                 <img src="https://miro.medium.com/max/1200/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg"
