@@ -9,41 +9,51 @@ const instance = axios.create({
 });
 
 export const usersAPI = {
-    getUsers(currentPage, pageSize){
-        return instance.get( `users?page=${currentPage}&count=${pageSize}`).then(response => response.data)
+    getUsers(currentPage, pageSize) {
+        return instance.get(`users?page=${currentPage}&count=${pageSize}`).then(response => response.data)
     },
-    follow(userId){
+    follow(userId) {
         return instance.post(`follow/${userId}`)
     },
-    unfollow(userId){
+    unfollow(userId) {
         return instance.delete(`follow/${userId}`)
     },
-    getProfile(userId){
+    getProfile(userId) {
         console.warn("Old method. Please use profileAPI");
         return profileAPI.getProfile(userId);
     }
 }
 
 export const profileAPI = {
-    getProfile(userId){
+    getProfile(userId) {
         return instance.get(`profile/` + userId);
     },
-    getStatus(userId){
+    getStatus(userId) {
         return instance.get(`profile/status/` + userId);
     },
-    updateStatus(status){
+    updateStatus(status) {
         return instance.put(`profile/status`, {status: status});
+    },
+    savePhoto(photoFile) {
+        let formData = new FormData();
+        formData.append("image", photoFile);
+
+        return instance.put(`profile/photo`, formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        });
     }
 }
 
 export const authAPI = {
-    me(){
+    me() {
         return instance.get(`auth/me`)
     },
-    login(email, password, rememberMe = false){
+    login(email, password, rememberMe = false) {
         return instance.post(`auth/login`, {email, password, rememberMe})
     },
-    logout(){
+    logout() {
         return instance.delete(`auth/login`)
     }
 }
