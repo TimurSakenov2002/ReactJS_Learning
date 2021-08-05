@@ -2,16 +2,4 @@
     width: 100px;
     height: 120px;
 }
-.selectedPage{
-    font-weight: bold;
-}
-.selectButton{
-    cursor: pointer;
-    background: white;
-    font-size: 25px;
-}
-.selectButton:hover{
-    color: red;
-    transition: 0.1s;
-}
 
