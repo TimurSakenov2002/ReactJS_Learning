@@ -6,9 +6,9 @@ import {login} from "../../redux/auth-reducer";
 import {Redirect} from "react-router-dom";
 import s from "./../common/FormControls/FormControls.module.css";
 
-const LoginForm = (error, handleSubmit) => {
+const LoginForm = (props) => {
     return(
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={props.handleSubmit}>
             <div>
                 <Field placeholder={"Email"} validate={[required]} component={Input} name={"email"}/>
             </div>
@@ -18,9 +18,12 @@ const LoginForm = (error, handleSubmit) => {
             <div>
                 <Field type="checkbox" component={Input} name={"rememberMe"}/>Remember me
             </div>
-            {error &&
-            <div className={s.formSummaryError}>
-                {error}
+
+            {props.captchaUrl && <img src={props.captchaUrl}/> }
+            {props.captchaUrl && <Field component={Input} validate={[required]} name={"captcha"} placeholder={"Symbols from image"}/>}
+
+            {props.error && <div className={s.formSummaryError}>
+                {props.error}
             </div>}
             <div>
                 <button>Login</button>
@@ -29,10 +32,16 @@ const LoginForm = (error, handleSubmit) => {
     )
 }
 
+
+const LoginReduxForm = reduxForm({
+    form: 'login'
+})(LoginForm)
+
+
 const Login = (props) => {
 
     const onSubmit = (formData) => {
-        props.login(formData.email, formData.password, formData.rememberMe)
+        props.login(formData.email, formData.password, formData.rememberMe, formData.captcha);
     }
 
     if(props.isAuth){
@@ -42,16 +51,13 @@ const Login = (props) => {
     return(
            <div>
                <h1>Login</h1>
-               <LoginReduxForm onSubmit={onSubmit}/>
+               <LoginReduxForm onSubmit={onSubmit} captchaUrl={props.captchaUrl}/>
            </div>
     )
 }
 
-const LoginReduxForm = reduxForm({
-    form: 'login'
-})(LoginForm)
-
 const mapStateToProps = (state) => ({
+    captchaUrl: state.auth.captchaUrl,
     isAuth: state.auth.isAuth
 })
 
