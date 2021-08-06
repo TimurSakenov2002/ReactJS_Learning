@@ -15,7 +15,6 @@ import {initializeApp} from "./redux/app-reducer";
 import Preloader from "./components/common/Preloader/Preloader";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
-import {Switch} from "react-router-dom";
 
 class App extends Component {
 
@@ -29,7 +28,7 @@ class App extends Component {
         }
         return (
             <div className="app-wrapper">
-                <HeaderContainer/>
+                 <HeaderContainer/>
                  <Navbar/>
                 <div className="app-wrapper-content">
 
