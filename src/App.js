@@ -40,8 +40,6 @@ class App extends Component {
                         <Route path="/music" component={Music}/>
                         <Route path="/news" component={News}/>
                         <Route path="/settings" component={Settings}/>
-                        <Route path="*" render={() => <div><b>404 NOT FOUND</b></div>}/>
-
                 </div>
             </div>
         )
