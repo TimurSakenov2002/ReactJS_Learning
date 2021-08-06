@@ -7,7 +7,7 @@ function Header(props) {
             <img src="https://cdn.worldvectorlogo.com/logos/swift-logo-with-text.svg"/>
             <div className={s.loginBlock}>
                 {props.isAuth
-                    ? <div>{props.login} - <button onClick={props.logout}>Log-out</button></div>
+                    ? <div><b>{props.login}</b> - <button onClick={props.logout}>Log-out</button></div>
                     : <NavLink to={'/login'}>
                         <span className={s.loginText}>Login</span>
                     </NavLink>}
