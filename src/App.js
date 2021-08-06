@@ -4,7 +4,7 @@ import Navbar from './components/Navbar/Navbar'
 import Music from './components/Music/Music'
 import News from './components/News/News'
 import Settings from './components/Settings/Settings'
-import {Route, withRouter} from 'react-router-dom';
+import {Redirect, Route, withRouter} from 'react-router-dom';
 import UsersContainer from "./components/Users/UsersContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import LoginPage from "./components/Login/Login";
@@ -15,6 +15,7 @@ import {initializeApp} from "./redux/app-reducer";
 import Preloader from "./components/common/Preloader/Preloader";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
+import {Switch} from "react-router-dom";
 
 class App extends Component {
 
@@ -29,20 +30,25 @@ class App extends Component {
         return (
             <div className="app-wrapper">
                 <HeaderContainer/>
-                <Navbar/>
+                 <Navbar/>
                 <div className="app-wrapper-content">
-                    <Route path="/login" render={() => <LoginPage/>}/>
-                    <Route path="/dialogs" render={() => <DialogsContainer/>}/>
-                    <Route path="/profile/:userId?" render={() => <ProfileContainer/>}/>
-                    <Route path="/users" render={() => <UsersContainer/>}/>
-                    <Route path="/music" component={Music}/>
-                    <Route path="/news" component={News}/>
-                    <Route path="/settings" component={Settings}/>
+
+                        <Route exact path="/" render={() => <Redirect to={"/profile"}/>}/>
+                        <Route path="/login" render={() => <LoginPage/>}/>
+                        <Route path="/dialogs" render={() => <DialogsContainer/>}/>
+                        <Route path="/profile/:userId?" render={() => <ProfileContainer/>}/>
+                        <Route path="/users" render={() => <UsersContainer/>}/>
+                        <Route path="/music" component={Music}/>
+                        <Route path="/news" component={News}/>
+                        <Route path="/settings" component={Settings}/>
+                        <Route path="*" render={() => <div><b>404 NOT FOUND</b></div>}/>
+
                 </div>
             </div>
-        );
+        )
     }
 }
+
 
 const mapStateToProps = (state) => ({
     initialized: state.app.initialized

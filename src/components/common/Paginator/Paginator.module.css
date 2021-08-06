@@ -1,15 +1,15 @@
 .selectedPage{
     font-weight: bold;
 }
-.selectButton{
-    cursor: pointer;
-    background: white;
-    font-size: 25px;
-}
-.selectButton:hover{
+.pageNumber:hover{
     color: red;
     transition: 0.1s;
 }
 .pageNumber{
-    color: blue;
+    color: black;
+    font-size: 25px;
+    cursor: pointer;
+    border: 2px solid black;
+    margin: 6px;
 }
+
